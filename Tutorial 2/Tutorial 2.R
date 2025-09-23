@@ -14,6 +14,7 @@ data$Vehicle.Style <- as.factor(data$Vehicle.Style)
 
 data$Model <- NULL #IDK this seems stupid to do IMO, I see no real reason to delete. Maybe it has too much correlation with Make, or something.
 
+#Partitioning the data
 set.seed(42)
 n <- dim(data)[1]
 train_ind <- sample(1:n, n*0.7)
