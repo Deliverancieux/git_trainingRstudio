@@ -1,4 +1,5 @@
 library(tidyverse)
+library(ggplot2)
 
 
 data <- read.csv("Tutorial 2/Cars_data.csv")
@@ -21,3 +22,5 @@ train_ind <- sample(1:n, n*0.7)
 
 train_data <- data[train_ind,]
 test_data <- data[-train_ind,]
+
+hist(data$MSRP, breaks= 1000, xlim = c(0, 250000))
