@@ -13,7 +13,13 @@ data$Market.Category <- as.factor(data$Market.Category)
 data$Vehicle.Size <- as.factor(data$Vehicle.Size)
 data$Vehicle.Style <- as.factor(data$Vehicle.Style)
 
-data$Model <- NULL #IDK this seems stupid to do IMO, I see no real reason to delete. Maybe it has too much correlation with Make, or something.
+
+#Other, much quicker way of doing this
+data <- data %>% 
+  mutate_if(is.character, as.factor)
+
+#Removing a variable
+data$Model <- NULL #IDK this seems stupid to do IMO, I see no real reason to delete. I guess it has too many levels. Like 915 or something.
 
 #Partitioning the data
 set.seed(42)
@@ -23,4 +29,8 @@ train_ind <- sample(1:n, n*0.7)
 train_data <- data[train_ind,]
 test_data <- data[-train_ind,]
 
+#Showing the distribution
 hist(data$MSRP, breaks= 1000, xlim = c(0, 250000))
+
+
+
